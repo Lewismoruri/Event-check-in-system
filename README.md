@@ -1,69 +1,123 @@
 # Event Check-In System
 
-A simple event registration and check-in prototype built with Google Forms and Google Sheets.
-
-The project explores how a lightweight, collaborative workflow can be used to manage event registration, attendee check-in, and basic attendance analysis without relying on paper-based lists.
+A simple event registration, check-in, and attendance tracking prototype built with Google Forms and Google Sheets.
 
 ## Overview
 
-Event registration and check-in can become time-consuming when attendees have to be searched for manually on printed lists.
+Event check-in can become time-consuming when attendees have to be searched for manually on printed lists or through large spreadsheets.
 
-I started this project as a small experiment to explore whether Google Forms and Google Sheets could provide a simpler way to manage the process.
+I started this project as a small experiment to explore whether commonly available tools such as Google Forms and Google Sheets could be used to create a simpler check-in workflow.
 
-The prototype follows this workflow:
+The prototype connects event registration, attendee check-in, and attendance analysis into one workflow.
 
-**Registration Form → Responses → Check-In → Attendance Data → Dashboard**
+### Workflow
 
-The project uses synthetic/test data for demonstration purposes.
+**Registration Form → Form Responses → Guest Check-In → Attendance Data → Dashboard**
 
-## Features
+The project currently uses synthetic/test data for demonstration purposes.
 
-### Registration
+---
 
-A Google Form is used to collect attendee information.
+## Project Objectives
 
-The submitted responses are automatically stored in Google Sheets, providing a central source of registration data.
+The main objectives of this prototype are to:
 
-### Attendee Check-In
+- Create a simple event registration process
+- Capture attendee information digitally
+- Provide a separate workspace for checking attendees in
+- Record check-in status and time
+- Calculate basic attendance metrics
+- Turn attendance data into a simple dashboard
+- Explore ways to make event check-in faster and easier for volunteers
 
-A separate check-in workspace is used to manage attendees.
+---
 
-The current prototype tracks:
+## How It Works
+
+### 1. Registration
+
+The process begins with a Google Form used to collect attendee information.
+
+When a person submits the form, their response is automatically stored in Google Sheets.
+
+The Google Form acts as the registration point, while the responses provide the source data for the rest of the workflow.
+
+---
+
+### 2. Form Responses
+
+The submitted registration information is stored in a Google Sheets response sheet.
+
+This sheet acts as the raw/source data and is kept separate from the volunteer-facing check-in workspace.
+
+This separation helps prevent the raw registration data from being unnecessarily modified during the check-in process.
+
+---
+
+### 3. Guest Check-In
+
+A separate `Guest Check_In` sheet is used as the check-in workspace.
+
+The current prototype includes:
 
 - Full Name
 - Email
 - Check-In Status
 - Check-In Time
 
-Check-in status can be updated between:
+The check-in status uses a dropdown with two options:
 
 - `Checked_In`
 - `Not Checked In`
 
-The check-in time is recorded when an attendee arrives.
+When an attendee arrives, their status can be updated and their check-in time recorded.
 
-### Attendance Dashboard
+The goal is to keep this workspace focused on the information needed to identify and check in an attendee.
 
-The check-in data is used to generate basic attendance insights, including:
+---
+
+### 4. Attendance Dashboard
+
+The check-in information can then be used to generate basic attendance insights.
+
+The current dashboard includes:
 
 - Total Registered
 - Total Attended
 - Did Not Attend
 - Attendance Rate
 - Attendance breakdown
-- Arrival progression
+- Guest arrival progression
 
-This demonstrates how operational data collected during an event can also be turned into useful information for understanding attendance.
+This demonstrates how information collected during an event can be transformed from simple operational records into useful attendance insights.
+
+---
+
+## Tools Used
+
+- **Google Forms** — event registration and data collection
+- **Google Sheets** — data storage, check-in workflow, calculations, and dashboard
+- **Data Validation** — check-in status dropdown
+- **Spreadsheet Formulas** — attendance calculations
+- **Charts & Dashboards** — visualizing attendance information
+
+---
 
 ## Project Structure
 
+The prototype is organized around three main areas:
+
 ```text
-Registration Form
-       ↓
-Google Form Responses
-       ↓
-Guest Check-In
-       ↓
-Check-In Status + Time
-       ↓
+Google Form
+     │
+     ▼
+Form Responses
+     │
+     ▼
+Guest Check_In
+     │
+     ├── Check-In Status
+     └── Check-In Time
+     │
+     ▼
 Attendance Dashboard
